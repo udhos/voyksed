@@ -9,7 +9,7 @@ CFLAGS            = -Wall -O3 -ggdb $(CAIRO_CFLAGS) $(CAIRO_SVG_CFLAGS)
 CAIRO_LDFLAGS     =  $(shell pkg-config cairo --libs)
 CAIRO_SVG_LDFLAGS =  $(shell pkg-config librsvg-2.0 --libs)
 #LDFLAGS          = -lSDL -lSDL_image -lSGE -lSDL_gfx
-LDFLAGS           = -lSDL -lSDL_image -lSGE \
+LDFLAGS           = -lm -lSDL -lSDL_image -lSGE -lSDL_gfx \
 			$(CAIRO_LDFLAGS) $(CAIRO_SVG_LDFLAGS)
 TARGET            = voyksed
 OBJ               = rect_intersect.o font.o image.o sprite.o ship.o msg.o \
@@ -27,5 +27,5 @@ clean:
 build: clean default
 
 voyksed: $(OBJ)
-	$(CC) $(LDFLAGS) -o $(TARGET) $(OBJ)
+	$(CC) -o $(TARGET) $(OBJ) $(LDFLAGS)
 
