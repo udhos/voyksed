@@ -4,7 +4,7 @@
 
 #include <cairo.h>
 #include <librsvg/rsvg.h>
-#include <librsvg/rsvg-cairo.h>
+//#include <librsvg/rsvg-cairo.h>
 
 #include "frame.h"
 #include "svg.h"
@@ -15,12 +15,12 @@ const char * const SVG_DIR = DATA_DIR "/svg";
 
 void svg_init()
 {
-  rsvg_init();
+  //rsvg_init(); // deprecated
 }
 
 void svg_term()
 {
-  rsvg_term();
+  //rsvg_term(); // deprecated
 }
 
 /*
