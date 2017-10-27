@@ -360,21 +360,21 @@ static void draw_frame_rate(frame_t *frame, SDL_Surface *screen)
     char buf[1024];
 
     snprintf(frame->update_rate, sizeof(frame->update_rate),
-	     "fps=%d delay=%dms coord: %dx%d",
+	     "fps=%ld delay=%dms coord: %dx%d",
 	     frame->updates, frame->delay,
 	     frame->x, frame->y);
     
     if (frame->do_delay) {
       if (frame->updates > 40) {
 	++frame->delay;
-	snprintf(buf, 1024, "too high fps=%d, increasing delay: %d",
+	snprintf(buf, 1024, "too high fps=%ld, increasing delay: %d",
 		 frame->updates, frame->delay);
 	msg_write(frame, buf);
       } 
       else if (frame->updates < 30) {
 	if (frame->delay > 0) {
 	  --frame->delay;
-	  snprintf(buf, 1024, "too low fps=%d, decreasing delay: %d",
+	  snprintf(buf, 1024, "too low fps=%ld, decreasing delay: %d",
 		   frame->updates, frame->delay);
 	  msg_write(frame, buf);
 	}
